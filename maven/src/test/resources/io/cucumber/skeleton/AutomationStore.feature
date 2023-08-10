@@ -1,5 +1,4 @@
 Feature: login
-//aaaajjj
   Scenario: Correct Credentials
     //Given Open browser
     And I open login page Automation Store
