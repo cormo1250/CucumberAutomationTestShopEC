@@ -23,15 +23,16 @@ public class AutomationStoreStepDef {
         wait = new WebDriverWait(webDriver, 3);
     }
 
-    @And("I open login page Automation Store")
+    @Given("I open home page of Automation Store")
     public void iOpenLoginPageAutomationStore() {
         webDriver.get("https://automationteststore.com");
     }
 
-    //@When("I click on account baner")
-    //    WebElement element = webDriver.findElement(By.cssSelector("div[id=customernav]"));
-     //   element.click();
-    //}
+    @When("I click on account baner")
+    public void iClickOnAccountBaner() {
+        WebElement element = webDriver.findElement(By.cssSelector("div[id=customernav]"));
+        element.click();
+    }
 
     @And("I type {string} as login in login page")
     public void iTypeAsLoginInLoginPage(String login) {
@@ -54,6 +55,7 @@ public class AutomationStoreStepDef {
 
     @Then("I'm logged in")
     public void iMLoggedIn() {
+        wait.until(ExpectedConditions.urlContains("account/account"));
     }
 
     @After
@@ -61,9 +63,29 @@ public class AutomationStoreStepDef {
         webDriver.quit();
     }
 
-    @When("I click on account baner")
-    public void iClickOnAccountBaner() {
-        WebElement element = webDriver.findElement(By.cssSelector("div[id=customernav]"));
-        element.click();
+
+    @Then("I'm not logged in")
+    public void iMNotLoggedIn() {
+        WebElement element = webDriver.findElement(By.cssSelector("div[class='alert alert-error alert-danger']"));
+        String currentelement = element.getText();
+        String expected = "Error: Incorrect login or password provided.";
+        Assert.assertTrue(currentelement.contains(expected));
+    }
+
+    @When("I type {string} as login, {string} as password in login page and click login button")
+    public void iTypeAsLoginAndAsPasswordInLoginPage(String login, String password) {
+        iTypeAsLoginInLoginPage(login);
+        iTypeAsPasswordInLoginPage(password);
+        iClickLoginButton();
+    }
+
+    @Given("I open home page of Automation Store and click on account baner")
+    public void iOpenHomePageOfAutomationStoreAndClickOnAccountBaner() {
+    iOpenLoginPageAutomationStore();
+    iClickOnAccountBaner();
+    }
+
+    @Then("<expectedResult>")
+    public void expectedresult() {
     }
 }
