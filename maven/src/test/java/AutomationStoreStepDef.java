@@ -29,10 +29,10 @@ public class AutomationStoreStepDef {
         webDriver.get("https://automationteststore.com");
     }
 
-    @When("I click on account baner")
-        WebElement element = webDriver.findElement(By.cssSelector("div[id=customernav]"));
-        element.click();
-    }
+    //@When("I click on account baner")
+    //    WebElement element = webDriver.findElement(By.cssSelector("div[id=customernav]"));
+     //   element.click();
+    //}
 
     @And("I type {string} as login in login page")
     public void iTypeAsLoginInLoginPage(String login) {
@@ -60,5 +60,11 @@ public class AutomationStoreStepDef {
     @After
     public void closeBrowser() {
         webDriver.quit();
+    }
+
+    @When("I click on account baner")
+    public void iClickOnAccountBaner() {
+        WebElement element = webDriver.findElement(By.cssSelector("div[id=customernav]"));
+        element.click();
     }
 }
