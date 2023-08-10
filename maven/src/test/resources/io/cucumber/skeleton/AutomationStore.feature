@@ -36,3 +36,5 @@ Feature: login
       | login    | password     | expectedResult    |
       | KonRafal | n8QSi@43HVSF | I'm logged in     |
       | KonRafal | n8QSi@43HVSX | I'm not logged in |
+      | RafalKon | n8QSi@43HVSF | I'm not logged in |
+      | RafalKon | n8QSi@43HVSX | I'm not logged in |
