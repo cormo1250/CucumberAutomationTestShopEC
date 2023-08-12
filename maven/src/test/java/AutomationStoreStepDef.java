@@ -30,7 +30,7 @@ public class AutomationStoreStepDef {
 
     @When("I click on account baner")
     public void iClickOnAccountBaner() {
-        WebElement element = webDriver.findElement(By.cssSelector("div[id=customernav]"));
+        WebElement element = webDriver.findElement(By.cssSelector("div#customernav a[href]"));
         element.click();
     }
 
