@@ -114,4 +114,36 @@ public class AutomationStorePaymentStepDefs {
     public void closeBrowser() {
         webDriver.quit();
     }
+
+    @And("I choose size {int} UK \\(from 3, 4, 5, 6), change quantity to {string}, click add to cart button, click checkout and confirm order")
+    public void iChooseSizeUKFromChangeQuantityToClickAddToCartButtonClickCheckoutAndConfirmOrder(int size, String quanity) {
+        if (size == 3) {
+            WebElement element = webDriver.findElement(By.cssSelector("#option344747"));
+            element.click();
+        }
+        else if (size == 4) {
+            WebElement element = webDriver.findElement(By.cssSelector("#option344748"));
+            element.click();
+        }
+        else if (size == 5) {
+            WebElement element = webDriver.findElement(By.cssSelector("#option344749"));
+            element.click();
+        }
+        else if (size == 6) {
+            WebElement element = webDriver.findElement(By.cssSelector("#option344750"));
+            element.click();
+        }else{
+            System.out.println("podana liczba nie zawiera sie w przedziale dostepnych produktow");
+        }
+        WebElement element2 = webDriver.findElement(By.cssSelector("#product_quantity"));
+        element2.clear();
+        element2.sendKeys(quanity);
+        WebElement element3 = webDriver.findElement(By.cssSelector("#product > fieldset > div:nth-child(6) > ul > li > a"));
+        element3.click();
+        WebElement element4 = webDriver.findElement(By.cssSelector("#cart_checkout1"));
+        element4.click();
+        WebElement element5 = webDriver.findElement(By.cssSelector("#checkout_btn"));
+        element5.click();
+    }
+
 }
