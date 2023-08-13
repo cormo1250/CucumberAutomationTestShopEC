@@ -1,4 +1,4 @@
-Feature: login
+Feature: Login
 
   Scenario: Correct Credentials
 
